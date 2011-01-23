@@ -55,8 +55,12 @@ PRODUCT_COPY_FILES += \
 
 PRODUCT_PACKAGES += \
     librs_jni \
+    lights.heroc \
+    gralloc.msm7k \
+    libOmxCore \
+    copybit.msm7k \
     sensors.heroc \
-    lights.heroc
+    gps.heroc
 
 # Keylayouts
 PRODUCT_COPY_FILES += \

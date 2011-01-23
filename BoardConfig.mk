@@ -37,6 +37,7 @@ TARGET_CPU_ABI2 := armeabi
 TARGET_ARCH_VARIANT := armv6-vfp
 TARGET_BOOTLOADER_BOARD_NAME := heroc
 
+
 TARGET_LIBAGL_USE_GRALLOC_COPYBITS := true
 
 # Wifi related defines
@@ -72,6 +73,8 @@ BOARD_USE_FROYO_LIBCAMERA := true
 BOARD_USES_GPSSHIM:=true
 
 BOARD_GPS_LIBRARIES := libgps
+
+BOARD_USE_NEW_LIBRIL_HTC := true
 
 # # cat /proc/mtd
 # dev:    size   erasesize  name
