@@ -1,4 +1,4 @@
-# Copyright (C) 2009 The Android Open Source Project
+# Copyright (C) 2007 The Android Open Source Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -12,17 +12,15 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-#
-# AndroidBoard.mk is a legacy mechanism to deal with a few
-# edge-cases that can't be managed otherwise. No new rules
-# should be added to this file.
-#
-
 LOCAL_PATH := $(call my-dir)
 
-# Least specific includes go first, so that they can get
-# overridden further down
-include $(CLEAR_VARS)
+$(call add-radio-file,recovery/images/firmware_install.565)
+$(call add-radio-file,recovery/images/firmware_error.565)
+$(call add-radio-file,recovery/images/bitmap_size.txt)
 
-# include the non-open-source counterpart to this file
--include vendor/htc/heroc/AndroidBoardVendor.mk
+include $(CLEAR_VARS)
+LOCAL_MODULE_TAGS := optional
+LOCAL_SRC_FILES := prebuilt/heroc-keypad.kcm
+include $(BUILD_KEY_CHAR_MAP)
+        
+-include vendor/htc/heroc/AndroidBoardVendor.mk#

@@ -14,18 +14,20 @@
 # limitations under the License.
 #
 
-#
-# This is the product configuration for a generic GSM passion,
-# not specialized for any geography.
-#
+$(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
 
+$(call inherit-product-if-exists, vendor/htc/heroc/device_heroc-vendor.mk)
+
+ifeq ($(TARGET_PREBUILT_KERNEL),)
+LOCAL_KERNEL := device/htc/heroc/prebuilt/kernel
+else
+LOCAL_KERNEL := $(TARGET_PREBUILT_KERNEL)
+endif
 
 PRODUCT_COPY_FILES += \
-    device/htc/heroc/init.heroc.rc:root/init.heroc.rc
+    $(LOCAL_KERNEL):kernel
 
-
-$(call inherit-product-if-exists, vendor/htc/heroc/heroc-vendor.mk)
-
+DEVICE_PACKAGE_OVERLAYS += device/htc/heroc/overlay
 
 PRODUCT_PROPERTY_OVERRIDES += \
 	ro.com.google.clientidbase=android-sprint-us \
@@ -34,10 +36,14 @@ PRODUCT_PROPERTY_OVERRIDES += \
 	ro.cdma.home.operator.alpha=Sprint \
 	ro.setupwizard.enable_bypass=1 \
 	ro.media.dec.jpeg.memcap=20000000 \
-	dalvik.vm.lockprof.threshold=500 \
-	dalvik.vm.dexopt-flags=m=y
+	dalvik.vm.lockprof.threshold=500
 
-DEVICE_PACKAGE_OVERLAYS += device/htc/heroc/overlay
+PRODUCT_COPY_FILES += \
+    device/htc/heroc/prebuilt/init.heroc.rc:root/init.heroc.rc \
+    device/htc/heroc/prebuilt/ueventd.heroc.rc:root/ueventd.heroc.rc
+
+PRODUCT_COPY_FILES += \
+    device/htc/heroc/prebuilt/30cpumem:system/etc/init.d/30cpumem
 
 PRODUCT_COPY_FILES += \
     frameworks/base/data/etc/handheld_core_hardware.xml:system/etc/permissions/handheld_core_hardware.xml \
@@ -45,78 +51,64 @@ PRODUCT_COPY_FILES += \
     frameworks/base/data/etc/android.hardware.location.gps.xml:system/etc/permissions/android.hardware.location.gps.xml \
     frameworks/base/data/etc/android.hardware.wifi.xml:system/etc/permissions/android.hardware.wifi.xml \
     frameworks/base/data/etc/android.hardware.sensor.proximity.xml:system/etc/permissions/android.hardware.sensor.proximity.xml \
+    frameworks/base/data/etc/android.hardware.sensor.compass.xml:system/etc/permissions/android.hardware.sensor.compass.xml \
+    frameworks/base/data/etc/android.hardware.sensor.accelerometer.xml:system/etc/permissions/android.hardware.sensor.accelerometer.xml \
     frameworks/base/data/etc/android.hardware.sensor.light.xml:system/etc/permissions/android.hardware.sensor.light.xml \
     frameworks/base/data/etc/android.hardware.touchscreen.multitouch.xml:system/etc/permissions/android.hardware.touchscreen.multitouch.xml \
     frameworks/base/data/etc/android.hardware.telephony.cdma.xml:system/etc/permissions/android.hardware.telephony.cdma.xml
 
+# Publish that we support the live wallpaper feature.
+PRODUCT_COPY_FILES += \
+    packages/wallpapers/LivePicker/android.software.live_wallpaper.xml:/system/etc/permissions/android.software.live_wallpaper.xml
+
 # media config xml file
 PRODUCT_COPY_FILES += \
-    device/htc/heroc/media_profiles.xml:system/etc/media_profiles.xml
-
-PRODUCT_PACKAGES += \
-    librs_jni \
-    lights.heroc \
-    gralloc.msm7k \
-    libOmxCore \
-    copybit.msm7k \
-    sensors.heroc \
-    gps.heroc
+    device/htc/heroc/prebuilt/media_profiles.xml:system/etc/media_profiles.xml
 
 # Keylayouts
 PRODUCT_COPY_FILES += \
-    device/htc/heroc/heroc-keypad.kl:system/usr/keylayout/heroc-keypad.kl \
-    device/htc/heroc/heroc-keypad.kcm.bin:system/usr/keychars/heroc-keypad.kcm.bin \
-    device/htc/heroc/h2w_headset.kl:system/usr/keylayout/h2w_headset.kl
+    device/htc/heroc/prebuilt/heroc-keypad.kl:system/usr/keylayout/heroc-keypad.kl \
+    device/htc/heroc/prebuilt/h2w_headset.kl:system/usr/keylayout/h2w_headset.kl
 
-# Passion uses high-density artwork where available
+PRODUCT_COPY_FILES += \
+    device/htc/heroc/prebuilt/vold.fstab:system/etc/vold.fstab \
+    device/htc/heroc/prebuilt/gps.conf:system/etc/gps.conf \
+    device/htc/heroc/prebuilt/apns-conf.xml:system/etc/apns-conf.xml
+
+PRODUCT_COPY_FILES += \
+   device/htc/heroc/prebuilt/wlan.ko:system/lib/modules/wlan.ko \
+
+# Product Packages
+PRODUCT_PACKAGES += \
+    librs_jni \
+    heroc-keypad.kcm \
+    sensors.heroc \
+    lights.heroc \
+    lights.msm7k \
+    gralloc.msm7k \
+    copybit.msm7k \
+    gps.heroc \
+#    wlan_loader \
+#    tiwlan.ini \
+#    dhcpcd.conf \
+    libOmxCore \
+    libOmxVidEnc \
+    libmm-omxcore
+
+PRODUCT_PACKAGES += \
+    VoiceDialer \
+    Gallery3D
+
+# HeroC uses mdpi artwork where available
 PRODUCT_LOCALES += mdpi
 
-PRODUCT_COPY_FILES += \
-    device/htc/heroc/vold.fstab:system/etc/vold.fstab \
-    device/htc/heroc/gps.conf:system/etc/gps.conf \
-    device/htc/heroc/apns-conf.xml:system/etc/apns-conf.xml
-
-PRODUCT_COPY_FILES += \
-   device/htc/heroc/wlan.ko:system/lib/modules/wlan.ko \
-   device/htc/heroc/modules/ah6.ko:system/lib/modules/2.6.29.6-aospGBMod/ah6.ko \
-   device/htc/heroc/modules/deflate.ko:system/lib/modules/2.6.29.6-aospGBMod/deflate.ko \
-   device/htc/heroc/modules/esp6.ko:system/lib/modules/2.6.29.6-aospGBMod/esp6.ko \
-   device/htc/heroc/modules/hid-dummy.ko:system/lib/modules/2.6.29.6-aospGBMod/hid-dummy.ko \
-   device/htc/heroc/modules/ip6_tunnel.ko:system/lib/modules/2.6.29.6-aospGBMod/ip6_tunnel.ko \
-   device/htc/heroc/modules/ipcomp6.ko:system/lib/modules/2.6.29.6-aospGBMod/ipcomp6.ko \
-   device/htc/heroc/modules/ipv6.ko:system/lib/modules/2.6.29.6-aospGBMod/ipv6.ko \
-   device/htc/heroc/modules/mip6.ko:system/lib/modules/2.6.29.6-aospGBMod/mip6.ko \
-   device/htc/heroc/modules/ramzswap.ko:system/lib/modules/2.6.29.6-aospGBMod/ramzswap.ko \
-   device/htc/heroc/modules/sit.ko:system/lib/modules/2.6.29.6-aospGBMod/sit.ko \
-   device/htc/heroc/modules/tun.ko:system/lib/modules/2.6.29.6-aospGBMod/tun.ko \
-   device/htc/heroc/modules/tunnel4.ko:system/lib/modules/2.6.29.6-aospGBMod/tunnel4.ko \
-   device/htc/heroc/modules/tunnel6.ko:system/lib/modules/2.6.29.6-aospGBMod/tunnel6.ko \
-   device/htc/heroc/modules/xfrm6_mode_beet.ko:system/lib/modules/2.6.29.6-aospGBMod/xfrm6_mode_beet.ko \
-   device/htc/heroc/modules/xfrm6_mode_ro.ko:system/lib/modules/2.6.29.6-aospGBMod/xfrm6_mode_ro.ko \
-   device/htc/heroc/modules/xfrm6_mode_transport.ko:system/lib/modules/2.6.29.6-aospGBMod/xfrm6_mode_transport.ko \
-   device/htc/heroc/modules/xfrm6_mode_tunnel.ko:system/lib/modules/2.6.29.6-aospGBMod/xfrm6_mode_tunnel.ko \
-   device/htc/heroc/modules/xfrm6_tunnel.ko:system/lib/modules/2.6.29.6-aospGBMod/xfrm6_tunnel.ko \
-   device/htc/heroc/modules/xfrm_ipcomp.ko:system/lib/modules/2.6.29.6-aospGBMod/xfrm_ipcomp.ko \
-   device/htc/heroc/modules/xt_TCPMSS.ko:system/lib/modules/2.6.29.6-aospGBMod/xt_TCPMSS.ko \
-   device/htc/heroc/modules/xt_hashlimit.ko:system/lib/modules/2.6.29.6-aospGBMod/xt_hashlimit.ko 
-
-ifeq ($(TARGET_PREBUILT_KERNEL),)
-LOCAL_KERNEL := device/htc/heroc/kernel
-else
-LOCAL_KERNEL := $(TARGET_PREBUILT_KERNEL)
-endif
-
-PRODUCT_COPY_FILES += \
-    $(LOCAL_KERNEL):kernel
-
-
-$(call inherit-product-if-exists, vendor/htc/heroc/heroc-vendor.mk)
+# Install HeroC kernel modules
+$(call inherit-product, device/htc/heroc/heroc-modules.mk)
 
 # stuff common to all HTC phones
 $(call inherit-product, device/htc/common/common.mk)
 
 $(call inherit-product, build/target/product/full_base.mk)
 
-
-PRODUCT_NAME := htc_heroc
+PRODUCT_NAME := generic_heroc
 PRODUCT_DEVICE := heroc

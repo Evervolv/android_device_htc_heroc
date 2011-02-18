@@ -20,5 +20,5 @@
 # In particular, you can add lunch options with the add_lunch_combo
 # function: add_lunch_combo generic-eng
 
-add_lunch_combo full_hero-userdebug
-add_lunch_combo full_hero-eng
+add_lunch_combo full_heroc-userdebug
+add_lunch_combo full_heroc-eng

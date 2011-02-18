@@ -1,8 +1,10 @@
 #
-# system.prop for device
+# system.prop for HeroC
 #
 
 rild.libpath=/system/lib/libhtc_ril.so
+ro.ril.hsxpa=2
+ro.ril.gprsclass=10
 ro.ril.def.preferred.network = 4
 ro.telephony.default_network = 4
 wifi.interface = tiwlan0
@@ -28,3 +30,20 @@ settings.display.brightness=143
 
 # Disable JIT by default
 dalvik.vm.execution-mode=int:fast
+
+# Performences tweaks
+dalvik.vm.heapsize=24m
+ro.compcache.default=0
+persist.sys.use_dithering=0
+debug.sf.hw=1
+    
+# OpenGL ES 1.1-CM
+ro.opengles.version = 65537
+ro.product.multi_touch_enabled=true
+
+# stagefright settings
+media.stagefright.enable-player=true
+media.stagefright.enable-meta=true
+media.stagefright.enable-scan=true
+media.stagefright.enable-http=true
+
