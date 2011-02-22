@@ -45,6 +45,11 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     device/htc/heroc/prebuilt/30cpumem:system/etc/init.d/30cpumem
 
+# No zram in kernel, so use ramzswap for compcache
+PRODUCT_COPY_FILES += \
+    device/htc/heroc/prebuilt/compcache:system/bin/compcache \
+    device/htc/heroc/prebuilt/rzscontrol:system/bin/rzscontrol
+
 PRODUCT_COPY_FILES += \
     frameworks/base/data/etc/handheld_core_hardware.xml:system/etc/permissions/handheld_core_hardware.xml \
     frameworks/base/data/etc/android.hardware.camera.flash-autofocus.xml:system/etc/permissions/android.hardware.camera.flash-autofocus.xml \
