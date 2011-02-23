@@ -48,6 +48,7 @@ PRODUCT_COPY_FILES += \
 # No zram in kernel, so use ramzswap for compcache
 PRODUCT_COPY_FILES += \
     device/htc/heroc/prebuilt/compcache:system/bin/compcache \
+    device/htc/heroc/prebuilt/handle_compcache:system/bin/handle_compcache \
     device/htc/heroc/prebuilt/rzscontrol:system/bin/rzscontrol
 
 PRODUCT_COPY_FILES += \
