@@ -14,30 +14,9 @@
 # limitations under the License.
 #
 KERNEL_VER := 2.6.29.6-CyanogenMod
-MOD_SRC:= device/htc/heroc/prebuilt/system/lib/modules
-MOD_DST := system/lib/modules
-SRC := $(MOD_SRC)/$(KERNEL_VER)/kernel
-DST := $(MOD_DST)/$(KERNEL_VER)/kernel
+MOD_SRC := device/htc/heroc/prebuilt/system/lib/modules
 
-PRODUCT_COPY_FILES += \
-    $(SRC)/crypto/deflate.ko:$(DST)/crypto/deflate.ko \
-    $(SRC)/drivers/hid/hid-dummy.ko:$(DST)/drivers/hid/hid-dummy.ko \
-    $(SRC)/drivers/staging/ramzswap/ramzswap.ko:$(DST)/drivers/staging/ramzswap/ramzswap.ko \
-    $(SRC)/net/ipv4/tunnel4.ko:$(DST)/net/ipv4/tunnel4.ko \
-    $(SRC)/net/ipv6/ah6.ko:$(DST)/net/ipv6/ah6.ko \
-    $(SRC)/net/ipv6/esp6.ko:$(DST)/net/ipv6/esp6.ko \
-    $(SRC)/net/ipv6/ip6_tunnel.ko:$(DST)/net/ipv6/ip6_tunnel.ko \
-    $(SRC)/net/ipv6/ipcomp6.ko:$(DST)/net/ipv6/ipcomp6.ko \
-    $(SRC)/net/ipv6/ipv6.ko:$(DST)/net/ipv6/ipv6.ko \
-    $(SRC)/net/ipv6/mip6.ko:$(DST)/net/ipv6/mip6.ko \
-    $(SRC)/net/ipv6/sit.ko:$(DST)/net/ipv6/sit.ko \
-    $(SRC)/net/ipv6/tunnel6.ko:$(DST)/net/ipv6/tunnel6.ko \
-    $(SRC)/net/ipv6/xfrm6_mode_beet.ko:$(DST)/net/ipv6/xfrm6_mode_beet.ko \
-    $(SRC)/net/ipv6/xfrm6_mode_ro.ko:$(DST)/net/ipv6/xfrm6_mode_ro.ko \
-    $(SRC)/net/ipv6/xfrm6_mode_transport.ko:$(DST)/net/ipv6/xfrm6_mode_transport.ko \
-    $(SRC)/net/ipv6/xfrm6_mode_tunnel.ko:$(DST)/net/ipv6/xfrm6_mode_tunnel.ko \
-    $(SRC)/net/ipv6/xfrm6_tunnel.ko:$(DST)/net/ipv6/xfrm6_tunnel.ko \
-    $(SRC)/net/netfilter/xt_hashlimit.ko:$(DST)/net/netfilter/xt_hashlimit.ko \
-    $(SRC)/net/netfilter/xt_TCPMSS.ko:$(DST)/net/netfilter/xt_TCPMSS.ko \
-    $(SRC)/net/xfrm/xfrm_ipcomp.ko:$(DST)/net/xfrm/xfrm_ipcomp.ko
-
+PRODUCT_COPY_FILES += $(shell \
+    find $(MOD_SRC) -name '*.ko' \
+    | sed -r 's/^\/?(.*\/)([^/ ]+)$$/\1\2:system\/lib\/modules\/$(KERNEL_VER)\/\2/' \
+    | tr '\n' ' ')
