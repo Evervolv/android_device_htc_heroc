@@ -27,11 +27,12 @@ settings.display.brightness=143
 # Disable JIT by default
 dalvik.vm.execution-mode=int:fast
 
-# Performences tweaks
+# Performance tweaks
 dalvik.vm.heapsize=32m
 dalvik.vm.checkjni=false
 ro.compcache.default=0
 persist.sys.use_dithering=0
+persist.sys.purgeable_assets=1
     
 # The OpenGL ES API level that is natively supported by this device.
 # This is a 16.16 fixed point number
