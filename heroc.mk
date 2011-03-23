@@ -14,8 +14,6 @@
 # limitations under the License.
 #
 
-$(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
-
 $(call inherit-product-if-exists, vendor/htc/heroc/device_heroc-vendor.mk)
 
 ifeq ($(TARGET_PREBUILT_KERNEL),)
@@ -100,7 +98,6 @@ PRODUCT_PACKAGES += \
     libmm-omxcore
 
 PRODUCT_PACKAGES += \
-    VoiceDialer \
     Gallery3D
 
 # HeroC uses mdpi artwork where available
@@ -112,7 +109,7 @@ $(call inherit-product, device/htc/heroc/heroc-modules.mk)
 # stuff common to all HTC phones
 $(call inherit-product, device/htc/common/common.mk)
 
-$(call inherit-product, build/target/product/full_base.mk)
+$(call inherit-product, build/target/product/small_base.mk)
 
 PRODUCT_NAME := generic_heroc
 PRODUCT_DEVICE := heroc
