@@ -40,9 +40,6 @@ PRODUCT_COPY_FILES += \
     device/htc/heroc/prebuilt/init.heroc.rc:root/init.heroc.rc \
     device/htc/heroc/prebuilt/ueventd.heroc.rc:root/ueventd.heroc.rc
 
-PRODUCT_COPY_FILES += \
-    device/htc/heroc/prebuilt/30cpumem:system/etc/init.d/30cpumem
-
 # No zram in kernel, so use ramzswap for compcache
 PRODUCT_COPY_FILES += \
     device/htc/heroc/prebuilt/compcache:system/bin/compcache \
