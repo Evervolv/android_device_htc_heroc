@@ -59,13 +59,6 @@ on boot
     chown system system /sys/class/leds/button-backlight/brightness
     chown system system /sys/class/leds/lcd-backlight/brightness
 
-    # enable the GPS
-    setprop ro.ril.def.agps.mode 2
-
-    setprop ro.ril.fast.dormancy.rule 1
-    setprop ro.ril.fast.dormancy.timeout 2
-
-
     # set CABC permissions
     chown system system /sys/class/leds/lcd-backlight/auto
 

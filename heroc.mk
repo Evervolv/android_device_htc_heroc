@@ -14,8 +14,6 @@
 # limitations under the License.
 #
 
-$(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
-
 $(call inherit-product-if-exists, vendor/htc/heroc/device_heroc-vendor.mk)
 
 ifeq ($(TARGET_PREBUILT_KERNEL),)
@@ -42,19 +40,21 @@ PRODUCT_COPY_FILES += \
     device/htc/heroc/prebuilt/init.heroc.rc:root/init.heroc.rc \
     device/htc/heroc/prebuilt/ueventd.heroc.rc:root/ueventd.heroc.rc
 
+# No zram in kernel, so use ramzswap for compcache
 PRODUCT_COPY_FILES += \
-    device/htc/heroc/prebuilt/30cpumem:system/etc/init.d/30cpumem
+    device/htc/heroc/prebuilt/compcache:system/bin/compcache \
+    device/htc/heroc/prebuilt/handle_compcache:system/bin/handle_compcache \
+    device/htc/heroc/prebuilt/rzscontrol:system/bin/rzscontrol
 
 PRODUCT_COPY_FILES += \
     frameworks/base/data/etc/handheld_core_hardware.xml:system/etc/permissions/handheld_core_hardware.xml \
-    frameworks/base/data/etc/android.hardware.camera.flash-autofocus.xml:system/etc/permissions/android.hardware.camera.flash-autofocus.xml \
+    frameworks/base/data/etc/android.hardware.camera.autofocus.xml:system/etc/permissions/android.hardware.camera.autofocus.xml \
     frameworks/base/data/etc/android.hardware.location.gps.xml:system/etc/permissions/android.hardware.location.gps.xml \
     frameworks/base/data/etc/android.hardware.wifi.xml:system/etc/permissions/android.hardware.wifi.xml \
-    frameworks/base/data/etc/android.hardware.sensor.proximity.xml:system/etc/permissions/android.hardware.sensor.proximity.xml \
     frameworks/base/data/etc/android.hardware.sensor.compass.xml:system/etc/permissions/android.hardware.sensor.compass.xml \
     frameworks/base/data/etc/android.hardware.sensor.accelerometer.xml:system/etc/permissions/android.hardware.sensor.accelerometer.xml \
     frameworks/base/data/etc/android.hardware.sensor.light.xml:system/etc/permissions/android.hardware.sensor.light.xml \
-    frameworks/base/data/etc/android.hardware.touchscreen.multitouch.xml:system/etc/permissions/android.hardware.touchscreen.multitouch.xml \
+    frameworks/base/data/etc/android.hardware.touchscreen.multitouch.distinct.xml:system/etc/permissions/android.hardware.touchscreen.multitouch.distinct.xml \
     frameworks/base/data/etc/android.hardware.telephony.cdma.xml:system/etc/permissions/android.hardware.telephony.cdma.xml
 
 # Publish that we support the live wallpaper feature.
@@ -81,7 +81,6 @@ PRODUCT_COPY_FILES += \
 # Product Packages
 PRODUCT_PACKAGES += \
     librs_jni \
-    heroc-keypad.kcm \
     sensors.heroc \
     lights.heroc \
     lights.msm7k \
@@ -96,7 +95,6 @@ PRODUCT_PACKAGES += \
     libmm-omxcore
 
 PRODUCT_PACKAGES += \
-    VoiceDialer \
     Gallery3D
 
 # HeroC uses mdpi artwork where available
