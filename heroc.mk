@@ -102,7 +102,7 @@ $(call inherit-product, device/htc/heroc/heroc-modules.mk)
 # stuff common to all HTC phones
 $(call inherit-product, device/htc/common/common.mk)
 
-$(call inherit-product, build/target/product/small_base.mk)
+$(call inherit-product, build/target/product/full.mk)
 
 PRODUCT_NAME := generic_heroc
 PRODUCT_DEVICE := heroc
