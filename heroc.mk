@@ -40,12 +40,7 @@ PRODUCT_COPY_FILES += \
     device/htc/heroc/prebuilt/init.heroc.rc:root/init.heroc.rc \
     device/htc/heroc/prebuilt/ueventd.heroc.rc:root/ueventd.heroc.rc
 
-# No zram in kernel, so use ramzswap for compcache
-PRODUCT_COPY_FILES += \
-    device/htc/heroc/prebuilt/compcache:system/bin/compcache \
-    device/htc/heroc/prebuilt/handle_compcache:system/bin/handle_compcache \
-    device/htc/heroc/prebuilt/rzscontrol:system/bin/rzscontrol
-
+# Permissions for HeroC
 PRODUCT_COPY_FILES += \
     frameworks/base/data/etc/handheld_core_hardware.xml:system/etc/permissions/handheld_core_hardware.xml \
     frameworks/base/data/etc/android.hardware.camera.autofocus.xml:system/etc/permissions/android.hardware.camera.autofocus.xml \
@@ -87,15 +82,16 @@ PRODUCT_PACKAGES += \
     gralloc.msm7k \
     copybit.msm7k \
     gps.heroc \
-#    wlan_loader \
-#    tiwlan.ini \
-#    dhcpcd.conf \
+    wlan_loader \
+    tiwlan.ini \
+    dhcpcd.conf \
     libOmxCore \
     libOmxVidEnc \
     libmm-omxcore
 
 PRODUCT_PACKAGES += \
-    Gallery3D
+    Gallery3D \
+    rzscontrol
 
 # HeroC uses mdpi artwork where available
 PRODUCT_LOCALES += mdpi
