@@ -90,6 +90,7 @@ PRODUCT_PACKAGES += \
     libmm-omxcore
 
 PRODUCT_PACKAGES += \
+    FileManager \
     Gallery3D \
     rzscontrol
 
