@@ -90,9 +90,13 @@ PRODUCT_PACKAGES += \
     libmm-omxcore
 
 PRODUCT_PACKAGES += \
+    CMParts \
     FileManager \
     Gallery3D \
-    rzscontrol
+    rzscontrol \
+    liblzo \
+    lsof \
+    openvpn
 
 # HeroC uses mdpi artwork where available
 PRODUCT_LOCALES += mdpi
