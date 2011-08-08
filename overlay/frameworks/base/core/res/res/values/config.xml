@@ -116,6 +116,10 @@
     	<item>0</item>
     </integer-array>
 
+    <!-- Component name of the default wallpaper. This will be ImageWallpaper if not 
+         specified -->
+    <string name="default_wallpaper_component">@null</string>
+
     <!-- Amount of time it takes for the light sensor to warm up in milliseconds.
          For this time after the screen turns on, the Power Manager
          will not debounce light sensor readings -->
