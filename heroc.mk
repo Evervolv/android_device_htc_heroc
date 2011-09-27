@@ -33,8 +33,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 	ro.cdma.home.operator.numeric=310120 \
 	ro.cdma.home.operator.alpha=Sprint \
 	ro.setupwizard.enable_bypass=1 \
-	ro.media.dec.jpeg.memcap=20000000 \
-	dalvik.vm.lockprof.threshold=500
+	ro.media.dec.jpeg.memcap=20000000
 
 PRODUCT_COPY_FILES += \
     device/htc/heroc/prebuilt/init.heroc.rc:root/init.heroc.rc \
@@ -68,6 +67,7 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     device/htc/heroc/prebuilt/vold.fstab:system/etc/vold.fstab \
     device/htc/heroc/prebuilt/gps.conf:system/etc/gps.conf \
+    device/htc/heroc/sysctl.conf:system/etc/sysctl.conf \
     device/htc/heroc/prebuilt/apns-conf.xml:system/etc/apns-conf.xml
 
 PRODUCT_COPY_FILES += \
