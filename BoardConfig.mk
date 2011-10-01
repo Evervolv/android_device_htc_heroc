@@ -59,8 +59,8 @@ BOARD_AVOID_DRAW_TEXTURE_EXTENSION := true
 
 BOARD_USES_GENERIC_AUDIO := false
 
-# Use HTC USB Function Switch to enable tethering via USB
-BOARD_USE_HTC_USB_FUNCTION_SWITCH := true
+# Use HTC USB Function Switch to enable tethering via USB (FALSE for .35 Kernel)
+BOARD_USE_HTC_USB_FUNCTION_SWITCH := false
 
 BOARD_USE_USB_MASS_STORAGE_SWITCH := true
 
