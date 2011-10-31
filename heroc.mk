@@ -90,16 +90,8 @@ PRODUCT_PACKAGES += \
     libmm-omxcore
 
 PRODUCT_PACKAGES += \
-    AndroidTerm \
-    CMParts \
-    CMScreenshot \
-    screenshot \
-    FileManager \
     Gallery3D \
-    rzscontrol \
-    liblzo \
-    lsof \
-    openvpn
+    rzscontrol
 
 # HeroC uses mdpi artwork where available
 PRODUCT_LOCALES += mdpi
