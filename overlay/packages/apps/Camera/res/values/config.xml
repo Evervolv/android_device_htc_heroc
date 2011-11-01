@@ -31,4 +31,7 @@
 
 	<!-- Resolution filtering -->
 	<string name="filtered_pictureSizes"></string>
+
+	<!-- Autofocus parameters -->
+	<string name="touchFocusParameter">touch-focus</string>
 </resources>
