@@ -81,20 +81,12 @@ PRODUCT_PACKAGES += \
     sensors.heroc \
     lights.heroc \
     lights.msm7k \
-    gralloc.msm7k \
     copybit.msm7k \
     gps.heroc \
     wlan_loader \
     tiwlan.ini \
-    dhcpcd.conf \
-    libOmxCore \
-    libOmxVidEnc \
-    libmm-omxcore \
-    com.android.future.usb.accessory
+    dhcpcd.conf
 
-PRODUCT_PACKAGES += \
-    Gallery3D \
-    rzscontrol
 
 # HeroC uses mdpi artwork where available
 PRODUCT_LOCALES += mdpi
@@ -103,9 +95,9 @@ PRODUCT_LOCALES += mdpi
 $(call inherit-product, device/htc/heroc/heroc-modules.mk)
 
 # stuff common to all HTC phones
-$(call inherit-product, device/htc/common/common.mk)
+#$(call inherit-product, device/htc/common/common.mk)
 
-$(call inherit-product, build/target/product/small_base.mk)
+$(call inherit-product, build/target/product/full_base.mk)
 
 PRODUCT_NAME := generic_heroc
 PRODUCT_DEVICE := heroc
