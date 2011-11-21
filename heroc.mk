@@ -95,7 +95,7 @@ PRODUCT_LOCALES += mdpi
 $(call inherit-product, device/htc/heroc/heroc-modules.mk)
 
 # stuff common to all HTC phones
-#$(call inherit-product, device/htc/common/common.mk)
+$(call inherit-product, device/htc/common/common.mk)
 
 $(call inherit-product, build/target/product/full_base.mk)
 
