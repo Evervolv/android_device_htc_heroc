@@ -9,10 +9,6 @@ on init
     mkdir /data/btips/TI 0777 bluetooth bluetooth
     mkdir /data/btips/TI/opp 0777 bluetooth bluetooth
     
-# for PPST(OS mode) Allen Hsu 20100104
-    mkdir /data/local/dmdata
-    chmod 0777 /data/local/dmdata
-
 on boot
     mount debugfs /sys/kernel/debug /sys/kernel/debug
 
@@ -70,12 +66,6 @@ on boot
     write /sys/module/lowmemorykiller/parameters/minfile 0,0,0,0,5632,6144
     write /sys/module/lowmemorykiller/parameters/check_filepages 1
 
-on property:init.svc.wpa_supplicant=stopped
-    start dhcp-release
-
-on property:init.svc.dhcp-release=stopped
-    stop dhcpcd
-
 # compass/accelerometer daemon
 service akmd /system/bin/akmd
     user compass
@@ -89,18 +79,18 @@ service wlan_loader /system/bin/wlan_loader \
     oneshot
 
 service wpa_supplicant /system/bin/wpa_supplicant \
-    -Dtiwlan0 -itiwlan0 -c/data/misc/wifi/wpa_supplicant.conf
-    user wifi
-    group wifi inet
+    -Dtiwlan0 -itiwlan0 -c/data/misc/wifi/wpa_supplicant.conf -q
+#    user wifi
+#    group wifi inet
     socket wpa_tiwlan0 dgram 660 wifi wifi
     disabled
     oneshot
 
-service dhcpcd_tiwlan0 /system/bin/dhcpcd -ABKL -d tiwlan0
+service dhcpcd_tiwlan0 /system/bin/dhcpcd -ABKL
     disabled
     oneshot
 
-service dhcp-release /system/bin/dhcpcd -k tiwlan0
+service iprenew_tiwlan0 /system/bin/dhcpcd -n
     disabled
     oneshot
 
@@ -110,50 +100,8 @@ service hciattach /system/bin/hciattach \
     group bluetooth net_bt_admin
     disabled
 
-#btips - 2.22
-service btips /system/bin/btipsd --logfile /data/btips/btips_log.txt -no_android_log
-    socket bluetooth stream 660 bluetooth bluetooth
-    socket dbus_bluetooth stream 660 bluetooth bluetooth
-    group bluetooth net_bt_admin misc
-    disabled # the MCP monitor service is responsible for bringing up the daemon
-    oneshot
-
 # bugreport is triggered by the KEY_BACK and KEY_MENU keycodes
 service bugreport /system/bin/dumpstate -d -v -z -o /sdcard/bugreports/bugreport
     disabled
     oneshot
     keycodes 158 139
-
-# for USB internet sharing
-service udhcpd /system/bin/udhcpd
-	disabled
-	oneshot
-
-service netsharing_on /system/bin/netsharing net on
-	disabled
-	oneshot
-
-service netsharing_off /system/bin/netsharing net off
-	disabled
-	oneshot
-
-# HTC IPC server
-service htcipcd /system/bin/htcipcd
-    user root
-    group root system
-
-# CIQ backend daemon
-service iqd /system/bin/iqd
-    user root
-    group root system
-
-# CIQ frontend daemon
-service iqfd /system/bin/iqfd
-    user root
-    group root system
-
-service dmagent /system/bin/dmagent -N -P19 -VSY
-    socket dmagent stream 660 root radio
-    user root
-    group radio cache inet misc
-
