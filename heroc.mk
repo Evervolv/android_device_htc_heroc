@@ -89,6 +89,8 @@ PRODUCT_PACKAGES += \
     lights.heroc \
     lights.msm7k \
     copybit.msm7k \
+    audio.primary.msm7k \
+    audio_policy.msm7k \
     gps.heroc \
     wlan_loader \
     tiwlan.ini \
