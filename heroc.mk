@@ -58,10 +58,6 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     packages/wallpapers/LivePicker/android.software.live_wallpaper.xml:/system/etc/permissions/android.software.live_wallpaper.xml
 
-# Add the Device Calibration File for the synaptics touch screen
-PRODUCT_COPY_FILES += \
-   device/htc/heroc/prebuilt/synaptics-rmi-touchscreen.idc:system/usr/idc/synaptics-rmi-touchscreen.idc 
-
 # media config xml file
 PRODUCT_COPY_FILES += \
     device/htc/heroc/prebuilt/media_profiles.xml:system/etc/media_profiles.xml
@@ -86,8 +82,6 @@ PRODUCT_PACKAGES += \
     lights.heroc \
     lights.msm7k \
     copybit.msm7k \
-    audio.primary.msm7k \
-    audio_policy.msm7k \
     gps.heroc \
     wlan_loader \
     tiwlan.ini \
