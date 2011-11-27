@@ -94,7 +94,6 @@ PRODUCT_PACKAGES += \
     wlan_loader \
     tiwlan.ini \
     dhcpcd.conf \
-    Mms \
     com.android.future.usb.accessory
 
 
