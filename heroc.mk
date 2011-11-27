@@ -94,7 +94,9 @@ PRODUCT_PACKAGES += \
     gps.heroc \
     wlan_loader \
     tiwlan.ini \
-    dhcpcd.conf
+    dhcpcd.conf \
+    Mms \
+    com.android.future.usb.accessory
 
 
 # HeroC uses mdpi artwork where available
@@ -106,7 +108,8 @@ $(call inherit-product, device/htc/heroc/heroc-modules.mk)
 # stuff common to all HTC phones
 $(call inherit-product, device/htc/common/common.mk)
 
-$(call inherit-product, build/target/product/full_base.mk)
+# use small_base from vendor/TeamICS, otherwise change to full_base.mk
+$(call inherit-product, vendor/TeamICS/products/small_base.mk)
 
 PRODUCT_NAME := generic_heroc
 PRODUCT_DEVICE := heroc
