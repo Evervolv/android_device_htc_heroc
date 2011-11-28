@@ -94,6 +94,8 @@ PRODUCT_PACKAGES += \
     wlan_loader \
     tiwlan.ini \
     dhcpcd.conf \
+    libOmxCore \
+    libmm-omxcore \
     com.android.future.usb.accessory
 
 
