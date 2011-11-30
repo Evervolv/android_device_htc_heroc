@@ -1,0 +1,15 @@
+# Aliases extracted from modules themselves.
+alias sdio:c07v*d* wlan
+alias devname:net/tun tun
+alias char-major-10-200 tun
+alias xfrm-type-10-51 ah6
+alias xfrm-type-10-50 esp6
+alias xfrm-type-10-108 ipcomp6
+alias xfrm-type-10-41 xfrm6_tunnel
+alias xfrm-mode-10-0 xfrm6_mode_transport
+alias xfrm-mode-10-1 xfrm6_mode_tunnel
+alias xfrm-mode-10-4 xfrm6_mode_beet
+alias xfrm-type-10-43 mip6
+alias xfrm-type-10-60 mip6
+alias netdev-sit0 sit
+alias netdev-ip6tnl0 ip6_tunnel
