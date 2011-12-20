@@ -58,9 +58,10 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     packages/wallpapers/LivePicker/android.software.live_wallpaper.xml:/system/etc/permissions/android.software.live_wallpaper.xml
 
-# Add the Device Calibration File for the synaptics touchscreen
+# Add the Device Configuration files for touchscreen and cursor (trackball) devices
 PRODUCT_COPY_FILES += \
-    device/htc/heroc/prebuilt/synaptics-rmi-touchscreen.idc:system/usr/idc/synaptics-rmi-touchscreen.idc
+    device/htc/heroc/prebuilt/synaptics-rmi-touchscreen.idc:system/usr/idc/synaptics-rmi-touchscreen.idc \
+    device/htc/heroc/prebuilt/heroc-nav.idc:system/usr/idc/heroc-nav.idc
 
 # media config xml file
 PRODUCT_COPY_FILES += \
@@ -79,8 +80,8 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     device/htc/heroc/prebuilt/wlan.ko:system/lib/modules/wlan.ko
 
-PRODUCT_COPY_FILES += \
-    device/htc/heroc/prebuilt/Superuser.apk:system/app/Superuser.apk
+#PRODUCT_COPY_FILES += \
+#    device/htc/heroc/prebuilt/Superuser.apk:system/app/Superuser.apk
 
 # Product Packages
 PRODUCT_PACKAGES += \
@@ -88,8 +89,10 @@ PRODUCT_PACKAGES += \
     sensors.heroc \
     lights.heroc \
     lights.msm7k \
-    audio.primary.msm7k \
-    audio_policy.msm7k \
+    audio.a2dp.default \
+    audio.primary.heroc \
+    audio_policy.heroc \
+    hwcomposer.default \
     gps.heroc \
     wlan_loader \
     tiwlan.ini \
@@ -98,6 +101,11 @@ PRODUCT_PACKAGES += \
     libOmxCore \
     libmm-omxcore \
     com.android.future.usb.accessory
+
+PRODUCT_PACKAGES += \
+    Superuser \
+    Superuser.apk \
+    su
 
 
 # HeroC uses mdpi artwork where available
