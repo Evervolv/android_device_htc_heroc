@@ -20,10 +20,11 @@
 # WARNING: This line must come *before* including the proprietary
 # variant, so that it gets overwritten by the parent (which goes
 # against the traditional rules of inheritance).
-USE_CAMERA_STUB := true
+#ICS USE_CAMERA_STUB := true
+USE_CAMERA_STUB := false
 
 # Fake building with eclair cam
-BOARD_USES_ECLAIR_LIBCAMERA := true
+#ICS BOARD_USES_ECLAIR_LIBCAMERA := true
 
 -include vendor/htc/heroc/BoardConfigVendor.mk
 
@@ -54,28 +55,21 @@ WIFI_FIRMWARE_LOADER        := "wlan_loader"
 BOARD_KERNEL_CMDLINE := no_console_suspend=1 console=null
 BOARD_KERNEL_BASE := 0x19200000
 
-#libsurfaceflinger to avoid Draw Texture Extenstion
-BOARD_AVOID_DRAW_TEXTURE_EXTENSION := true
-
 BOARD_USES_GENERIC_AUDIO := false
+#ICS BOARD_USES_AUDIO_LEGACY := true
 
 BOARD_HAVE_BLUETOOTH := true
 
 BOARD_VENDOR_USE_AKMD := akm8973
 
-BOARD_VENDOR_QCOM_AMSS_VERSION := 6355
+BOARD_VENDOR_QCOM_AMSS_VERSION := 4410
 
 BOARD_USES_QCOM_HARDWARE := true
-
-# BOARD_HAS_LIMITED_EGL := true
 
 TARGET_HARDWARE_3D := false
 
 # OpenGL drivers config file path
 BOARD_EGL_CFG := device/htc/heroc/egl.cfg
-
-# No authoring clock for OpenCore
-# BOARD_NO_PV_AUTHORING_CLOCK := true
 
 BOARD_USE_HTC_LIBSENSORS := true
 BOARD_USE_heroc_LIBSENSORS := true
@@ -85,18 +79,12 @@ BOARD_USE_heroc_LIBSENSORS := true
 
 BOARD_USES_QCOM_LIBS := true
 
-#TARGET_HAS_ANCIENT_MSMCAMERA := true
-BUILD_LIBCAMERA := true
-BOARD_CAMERA_LIBRARIES := libcameraservice libcamera
-USE_CAMERA_STUB:= false
+#ICS BUILD_LIBCAMERA := true
+#ICS BOARD_CAMERA_LIBRARIES := libcameraservice libcamera
+#ICS USE_CAMERA_STUB:= false
 
 BOARD_USES_GPSSHIM := true
-
 BOARD_GPS_NEEDS_XTRA := true
-
-TARGET_LIBAGL_USE_GRALLOC_COPYBITS := true
-
-BOARD_USE_LEGACY_TOUCHSCREEN := true
 
 BOARD_NO_RGBX_8888 := true
 
@@ -130,3 +118,7 @@ BOARD_FLASH_BLOCK_SIZE := 131072
 
 #TARGET_RECOVERY_UI_LIB := librecovery_ui_heroc librecovery_ui_htc
 TARGET_PREBUILT_KERNEL := device/htc/heroc/prebuilt/kernel
+
+# ICS 
+COMMON_GLOBAL_CFLAGS += -DMISSING_EGL_EXTERNAL_IMAGE -DMISSING_EGL_PIXEL_FORMAT_YV12 -DMISSING_GRALLOC_BUFFERS
+#BOARD_USE_LEGACY_TOUCHSCREEN := true
