@@ -93,7 +93,6 @@ service iprenew_tiwlan0 /system/bin/dhcpcd -n
 
 service hciattach /system/bin/hciattach \
     -n -s 115200 /dev/ttyHS0 texasalt 4000000 flow
-    class main
     user bluetooth
     group bluetooth net_bt_admin
     disabled

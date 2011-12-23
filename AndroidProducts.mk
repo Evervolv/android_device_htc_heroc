@@ -26,4 +26,5 @@
 #
 
 PRODUCT_MAKEFILES := \
-    $(LOCAL_DIR)/heroc.mk
+    $(LOCAL_DIR)/heroc.mk \
+    $(LOCAL_DIR)/TeamICS.mk
