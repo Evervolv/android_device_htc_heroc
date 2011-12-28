@@ -27,6 +27,8 @@ on fs
     symlink /mnt/sdcard /sdcard
 
     # bluetooth power up/down interface
+    chown bluetooth bluetooth /dev/ttyHS0
+    chmod 0600 /dev/ttyHS0
     chown bluetooth bluetooth /sys/class/rfkill/rfkill0/type
     chown bluetooth bluetooth /sys/class/rfkill/rfkill0/state
     chmod 0660 /sys/class/rfkill/rfkill0/state
@@ -93,6 +95,7 @@ service iprenew_tiwlan0 /system/bin/dhcpcd -n
 
 service hciattach /system/bin/hciattach \
     -n -s 115200 /dev/ttyHS0 texasalt 4000000 flow
+    class main
     user bluetooth
     group bluetooth net_bt_admin
     disabled
