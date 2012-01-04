@@ -92,6 +92,7 @@ PRODUCT_PACKAGES += \
     audio.a2dp.default \
     audio.primary.heroc \
     audio_policy.heroc \
+    gralloc.heroc \
     hwcomposer.default \
     gps.heroc \
     wlan_loader \
