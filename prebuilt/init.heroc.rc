@@ -35,6 +35,13 @@ on fs
     chown bluetooth bluetooth sys/devices/platform/msm_serial_hs.0/serial_lock_cpu
     chmod 0660 /sys/devices/platform/msm_serial_hs.0/serial_lock_cpu
 
+    # Permissions for camera access
+    chmod 0666 /dev/msm_camera/config0
+    chmod 0666 /dev/msm_camera/control0
+    chmod 0666 /dev/mem_camera/frame0
+
+    chmod 0666 /dev/graphics/fb0
+
     # Permissions for Liblights.
     chown system system /sys/class/leds/green/brightness
     chown system system /sys/class/leds/green/blink
