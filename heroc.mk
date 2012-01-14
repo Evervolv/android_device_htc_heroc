@@ -78,6 +78,8 @@ PRODUCT_COPY_FILES += \
     device/htc/heroc/prebuilt/apns-conf.xml:system/etc/apns-conf.xml
 
 PRODUCT_COPY_FILES += \
+    device/htc/heroc/prebuilt/libcamera.so:obj/lib/libcamera.so \
+    device/htc/heroc/prebuilt/libcamera.so:system/lib/libcamera.so \
     device/htc/heroc/prebuilt/wlan.ko:system/lib/modules/wlan.ko
 
 #PRODUCT_COPY_FILES += \
@@ -93,8 +95,8 @@ PRODUCT_PACKAGES += \
     audio.primary.heroc \
     audio_policy.heroc \
     gralloc.heroc \
-    hwcomposer.default \
     gps.heroc \
+    camera.msm7k \
     wlan_loader \
     tiwlan.ini \
     dhcpcd.conf \
