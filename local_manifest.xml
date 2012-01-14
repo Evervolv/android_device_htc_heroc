@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<manifest>
+<project name="TeamICS/android_device_htc_heroc" path="device/htc/heroc" remote="github" revision="update" />
+<project name="TeamICS/vendor_TeamICS" path="vendor/TeamICS" remote="github" revision="rework_build" />
+<project name="TeamICS/vendor_htc_heroc" path="vendor/htc/heroc" remote="github" revision="ics" />
+<project name="CyanogenMod/android_system_wlan_ti" path="system/wlan/ti" remote="github" revision="gingerbread" />
+</manifest>
