@@ -20,11 +20,10 @@
 # WARNING: This line must come *before* including the proprietary
 # variant, so that it gets overwritten by the parent (which goes
 # against the traditional rules of inheritance).
-#ICS USE_CAMERA_STUB := true
-USE_CAMERA_STUB := false
+USE_CAMERA_STUB := true
 
 # Fake building with eclair cam
-#ICS BOARD_USES_ECLAIR_LIBCAMERA := true
+BOARD_USES_ECLAIR_LIBCAMERA := true
 
 -include vendor/htc/heroc/BoardConfigVendor.mk
 
@@ -83,9 +82,9 @@ BOARD_USE_heroc_LIBSENSORS := true
 # use old sensors HAL
 # TARGET_USES_OLD_LIBSENSORS_HAL := true
 
-#ICS BUILD_LIBCAMERA := true
-#ICS BOARD_CAMERA_LIBRARIES := libcameraservice libcamera
-#ICS USE_CAMERA_STUB:= false
+BUILD_LIBCAMERA := true
+BOARD_CAMERA_LIBRARIES := libcameraservice libcamera
+USE_CAMERA_STUB:= false
 
 BOARD_USES_GPSSHIM := true
 BOARD_GPS_NEEDS_XTRA := true
