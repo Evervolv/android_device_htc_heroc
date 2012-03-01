@@ -1,5 +1,7 @@
 # Copyright 2011 The Android Open Source Project
 
+ifeq ($(TARGET_BOOTLOADER_BOARD_NAME),heroc)
+
 #AUDIO_POLICY_TEST := true
 #ENABLE_AUDIO_DUMP := true
 
@@ -70,3 +72,5 @@ endif
 LOCAL_C_INCLUDES := hardware/libhardware_legacy/audio
 
 include $(BUILD_SHARED_LIBRARY)
+
+endif

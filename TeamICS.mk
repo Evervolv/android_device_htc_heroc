@@ -20,4 +20,4 @@ PRODUCT_MANUFACTURER := HTC
 # Product specific defines
 #
 PRODUCT_SPECIFIC_DEFINES += TARGET_PRELINKER_MAP=$(TOP)/vendor/TeamICS/prelink-linux-arm-heroc.map
-TARGET_CUSTOM_RELEASETOOL := ./vendor/TeamICS/tools/squisher
+#TARGET_CUSTOM_RELEASETOOL := ./vendor/TeamICS/tools/squisher

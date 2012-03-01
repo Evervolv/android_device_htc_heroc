@@ -12,6 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+ifeq ($(TARGET_BOOTLOADER_BOARD_NAME),heroc)
 
 LOCAL_PATH := $(call my-dir)
 
@@ -32,3 +33,5 @@ LOCAL_MODULE := gralloc.$(TARGET_BOOTLOADER_BOARD_NAME)
 LOCAL_MODULE_TAGS := optional
 LOCAL_CFLAGS:= -DLOG_TAG=\"gralloc.$(TARGET_BOOTLOADER_BOARD_NAME)\"
 include $(BUILD_SHARED_LIBRARY)
+
+endif
