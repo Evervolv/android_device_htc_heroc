@@ -82,8 +82,6 @@ PRODUCT_COPY_FILES += \
     device/htc/heroc/prebuilt/libcamera.so:system/lib/libcamera.so \
     device/htc/heroc/prebuilt/wlan.ko:system/lib/modules/wlan.ko
 
-#PRODUCT_COPY_FILES += \
-#    device/htc/heroc/prebuilt/Superuser.apk:system/app/Superuser.apk
 
 # Product Packages
 PRODUCT_PACKAGES += \
@@ -105,11 +103,9 @@ PRODUCT_PACKAGES += \
     libmm-omxcore \
     com.android.future.usb.accessory
 
-PRODUCT_PACKAGES += \
-    Superuser \
-    Superuser.apk \
-    su
-
+# USB mass storage
+ADDITIONAL_DEFAULT_PROPERTIES += \
+    persist.sys.usb.config=mass_storage
 
 # HeroC uses mdpi artwork where available
 PRODUCT_LOCALES += mdpi
